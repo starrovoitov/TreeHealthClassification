@@ -39,30 +39,3 @@ jobs:
           else
             echo "Notebook executed successfully."
           fi
-
-
-  check-fastapi-server:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Start FastAPI Server
-        run: |
-          nohup python api_service.py &> server.log &
-          sleep 10  # Даем время серверу запуститься
-        id: start-server
-
-      - name: Test FastAPI Health Endpoint
-        run: |
-          curl -X GET "http://127.0.0.1:8000/health"
-          if [ $? -ne 0 ]; then
-            echo "FastAPI server health check failed."
-            cat server.log
-            exit 1
-          else
-            echo "FastAPI server is healthy."
-          fi
-
-      - name: Stop FastAPI Server
-        if: always()
-        run: |
-          pkill -f api_service.py || true

@@ -1,0 +1,3 @@
+MODEL_PATH = "model.pth"
+INPUT_SIZE = 21
+NUM_CLASSES = 3

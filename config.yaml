@@ -1,0 +1,10 @@
+experiment_name: Tree Health Classification
+input_size: 21
+num_classes: 3
+learning_rate: 0.00001
+momentum: 0.9
+weight_decay: 1e-4
+batch_size: 1024
+num_epochs: 100
+dropout_rate: 0.2
+model_path: model.pth

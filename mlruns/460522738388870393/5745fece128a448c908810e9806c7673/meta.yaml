@@ -1,0 +1,15 @@
+artifact_uri: file:///F:/MyProjects/TreeHealthClassification/mlruns/460522738388870393/5745fece128a448c908810e9806c7673/artifacts
+end_time: 1738405741214
+entry_point_name: ''
+experiment_id: '460522738388870393'
+lifecycle_stage: active
+run_id: 5745fece128a448c908810e9806c7673
+run_name: dapper-calf-461
+run_uuid: 5745fece128a448c908810e9806c7673
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1738405111062
+status: 3
+tags: []
+user_id: user

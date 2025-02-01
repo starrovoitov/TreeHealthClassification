@@ -1,0 +1,15 @@
+artifact_uri: file:///F:/MyProjects/TreeHealthClassification/mlruns/460522738388870393/e1525e3e43914f7fac40706dd0b21622/artifacts
+end_time: 1738402553194
+entry_point_name: ''
+experiment_id: '460522738388870393'
+lifecycle_stage: active
+run_id: e1525e3e43914f7fac40706dd0b21622
+run_name: mysterious-ray-237
+run_uuid: e1525e3e43914f7fac40706dd0b21622
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1738402030166
+status: 3
+tags: []
+user_id: user

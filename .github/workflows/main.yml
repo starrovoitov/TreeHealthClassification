@@ -1,4 +1,4 @@
-name: Train Model in Jupyter Notebook
+name: Train Model in Jupyter Notebook and Test API
 
 on:
   push:
@@ -29,7 +29,6 @@ jobs:
         run: |
           jupyter nbconvert --to notebook --execute training.ipynb --output executed_training.ipynb
         env:
-          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
           MLFLOW_EXPERIMENT_NAME: Tree_Health_Classification
 
       - name: Check Notebook Execution Status
@@ -40,3 +39,30 @@ jobs:
           else
             echo "Notebook executed successfully."
           fi
+
+
+  check-fastapi-server:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Start FastAPI Server
+        run: |
+          nohup python api_service.py &> server.log &
+          sleep 10  # Даем время серверу запуститься
+        id: start-server
+
+      - name: Test FastAPI Health Endpoint
+        run: |
+          curl -X GET "http://127.0.0.1:8000/health"
+          if [ $? -ne 0 ]; then
+            echo "FastAPI server health check failed."
+            cat server.log
+            exit 1
+          else
+            echo "FastAPI server is healthy."
+          fi
+
+      - name: Stop FastAPI Server
+        if: always()
+        run: |
+          pkill -f api_service.py || true
